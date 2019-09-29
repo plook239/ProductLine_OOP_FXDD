@@ -11,14 +11,14 @@ There are three tabs at the top of the application: Product Line, Produce, and
 Production Log.
 On the Product Line tab, a user shall enter a product type, product name,
 and a manufacturer. The 'add product' button submits that data to the database to be stored.
-Second and third tabs cmoming soon.
+Second and third tabs coming soon.
 
 ## Built With
 Language: Javafx \
 IDE: IntelliJ Ultimate Edition \
-Other tools: Scenebuilder, H2 database
+Other tools: Scene builder, H2 database
 ## Contributing
-Professor Vanselow contibutes in class and via his website
+Professor Vanselow contributes in class and via his website
 ## Author
 Peter J Look II - SID: 815 192 220
 ## License
@@ -29,4 +29,4 @@ https://github.com/PV-COP/PV-README-TEMPLATE
 ## History
 Coming soon...
 ## Key Programming Concepts Utilized
-Javafx, scenebuilder, H2 database, SQL, object oriented paradigm
+Javafx, scene builder, H2 database, SQL, object oriented paradigm
