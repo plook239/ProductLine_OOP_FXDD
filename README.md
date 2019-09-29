@@ -5,7 +5,7 @@ Coming soon
 ## Documentation
 Coming soon
 ## Diagrams
-![Project diagram]()
+![Project diagram](images/Package_sample.jpg)
 ## Getting Started
 There are three tabs at the top of the application: Product Line, Produce, and 
 Production Log.
