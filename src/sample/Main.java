@@ -1,3 +1,10 @@
+/********************************************
+ * Author: Peter Look II
+ * File: Main.java
+ * Project: Production_Line_OOP_FXDD
+ * Date created: 9/16/2019
+ *********************************************/
+
 package sample;
 
 import javafx.application.Application;
@@ -6,18 +13,32 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class Main extends Application {
+/************************
+ * Creates primary stage
+ ************************/
 
-    @Override
-    public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
-        primaryStage.setTitle("Hello World");
-        primaryStage.setScene(new Scene(root, 300, 275));
-        primaryStage.show();
-    }
+public class Main extends Application
+{
+
+  @Override
+  public void start(Stage primaryStage) throws Exception
+  {
+    Parent root = FXMLLoader.load(getClass().getResource("productionManager.fxml"));
+    primaryStage.setTitle("Production Manager");
+    primaryStage.setScene(new Scene(root, 590, 525));
+    primaryStage.show();
+  }
+
+  /***************
+   * Main method
+   ***************/
+
+  public static void main(String[] args)
+  {
+    launch(args);
 
 
-    public static void main(String[] args) {
-        launch(args);
-    }
+  }
 }
+
+
