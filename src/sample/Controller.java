@@ -2,7 +2,7 @@
  * Author: Peter Look II
  * File: Controller.java
  * Project: Production_Line_OOP_FXDD
- * Date created: 9/16/2019 , finsished 9/28/2019
+ * Date created: 9/16/2019 , finished 9/28/2019
  ************************************************/
 
 package sample;
@@ -32,17 +32,16 @@ import javafx.scene.input.MouseEvent;
 
 public class Controller {
 
-  static final String JDBC_DRIVER = "org.h2.Driver";
-  static final String DB_URL = "jdbc:h2:./res/ProductionDB";
-  Connection connect = null;
+  private static final String JDBC_DRIVER = "org.h2.Driver";
+  private static final String DB_URL = "jdbc:h2:./res/ProductionDB";
+  private Connection connect = null;
   private PreparedStatement prepStmt = null;
 
   /***************************
    * Calls initializeDataBase
-   * throws SQLException
    **************************/
 
-  public Controller() throws SQLException {
+  public Controller() {
     initializeDataBase();
   }
 
@@ -55,10 +54,12 @@ public class Controller {
   public void initialize()
   {
     choiceBox_1.getItems().addAll("AUDIO", "COMMUNICATION","HARDWARE");
-    for(int i = 0; i < 11; i++)
+    for(int i = 1; i < 11; i++)
     {
       comboBox_produce.getItems().addAll(i);
     }
+    comboBox_produce.setEditable(true);
+    comboBox_produce.getSelectionModel().selectFirst();
   }
 
   /********************************************************
@@ -79,11 +80,7 @@ public class Controller {
       connect = DriverManager.getConnection(DB_URL, USER, PASS);
       prepStmt = connect.prepareStatement(addProductToDataBase);
     }
-    catch (ClassNotFoundException e)
-    {
-      e.printStackTrace();
-    }
-    catch (SQLException e)
+    catch (ClassNotFoundException | SQLException e)
     {
       e.printStackTrace();
     }
