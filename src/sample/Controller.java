@@ -36,7 +36,7 @@ public class Controller {
    * ~ 0-10 for choosing quantities
    */
   public void initialize() {
-    choiceBox_1.getItems().addAll("AUDIO", "COMMUNICATION", "HARDWARE");
+    choiceBox_1.getItems().addAll(ItemType.AUDIO.toString(), ItemType.AUDIO_MOBILE.toString(), ItemType.VISUAL.toString(), ItemType.VISUAL_MOBILE.toString());
     for (int i = 1; i < 11; i++) {
       comboBox_produce.getItems().addAll(i);
     }
