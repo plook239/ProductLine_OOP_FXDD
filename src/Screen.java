@@ -4,27 +4,32 @@ public class Screen implements ScreenSpec {
   int rt;
 
   /**
+   * Constructor for Screen.
+   *
    * @param res is the resolution
    * @param rr is the refresh rate
    * @param rt is the response time
-   * */
+   */
   public Screen(String res, int rr, int rt) {
     this.res = res;
     this.rr = rr;
     this.rt = rt;
   }
-  /**
-   * Creates a string with screen data
-   * */
-  public String toString(){
+
+  /** Creates a string with screen data. */
+  public String toString() {
     return "Screen:\n"
-        + "Resolution: " + res + "\n"
-        + "Refresh rate: " + rr + "\n"
-        + "Response time: " + rt;
+        + "Resolution: "
+        + res
+        + "\n"
+        + "Refresh rate: "
+        + rr
+        + "\n"
+        + "Response time: "
+        + rt;
   }
-  /**
-   * Getters and setters
-   * */
+
+  /** Getters and setters. */
   @Override
   public String getResolution() {
     return res;

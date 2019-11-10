@@ -1,4 +1,4 @@
-public class MoviePlayer extends Product implements MultimediaControl{
+public class MoviePlayer extends Product implements MultimediaControl {
 
   private MonitorType monitorType;
   private Screen screen;
@@ -32,14 +32,28 @@ public class MoviePlayer extends Product implements MultimediaControl{
     System.out.println("Next movie");
   }
 
+  /** Movie player toString() with object data. */
   public String toString() {
-    return "Name: " + Name + "\n" + "Manufacturer: " + Manufacturer + "\n" + "Type: "
-        + monitorType + "\n" + "Screen:\n"
-        + "Resolution: " + screen.res + "\n"
-        + "Refresh rate: " + screen.rr + "\n"
-        + "Response time: " + screen.rt + "\n"
-        + "Monitor Type: " + monitorType;
+    return "Name: "
+        + Name
+        + "\n"
+        + "Manufacturer: "
+        + Manufacturer
+        + "\n"
+        + "Type: "
+        + monitorType
+        + "\n"
+        + "Screen:\n"
+        + "Resolution: "
+        + screen.res
+        + "\n"
+        + "Refresh rate: "
+        + screen.rr
+        + "\n"
+        + "Response time: "
+        + screen.rt
+        + "\n"
+        + "Monitor Type: "
+        + monitorType;
   }
-
 }
-

@@ -7,40 +7,37 @@ public abstract class Product implements Item {
   private Screen Screen;
 
   /**
-   * Receives String values for:
+   * Receives String values for Product data.
+   *
    * @param name Product Name
    * @param manufacturer Manufacturer Name
    * @param type Item Type
-   * */
+   */
   Product(String name, String manufacturer, String type) {
     this.Name = name;
     this.Manufacturer = manufacturer;
-    this.Type= type;
+    this.Type = type;
   }
 
   /**
-   * Receives String values for:
+   * Receives String values for Product data.
+   *
    * @param name Product Name
    * @param manufacturer Manufacturer Name
    * @param screen Screen Type
-   * */
+   */
   Product(String name, String manufacturer, Screen screen) {
     this.Name = name;
     this.Manufacturer = manufacturer;
     this.Screen = screen;
   }
 
-  /**
-   * Creates a string with product data with new line after each data point
-   * */
+  /** Creates a string with product data with new line after each data point. */
   public String toString() {
-    return "Name: " + Name + "\n" + "Manufacturer: " + Manufacturer + "\n" + "Type: "
-        + Type;
+    return "Name: " + Name + "\n" + "Manufacturer: " + Manufacturer + "\n" + "Type: " + Type;
   }
 
-  /**
-   * Getter and Setters
-   * */
+  /** Getter and Setters. */
   public int getId() {
     return Id;
   }
@@ -68,13 +65,13 @@ public abstract class Product implements Item {
   public void setType(String type) {
     Type = type;
   }
-
 }
 
-class Widget extends Product{
+class Widget extends Product {
 
   /**
-   * Widget for creating a Product
+   * Widget for creating a Product.
+   *
    * @param name Product Name
    * @param manufacturer Manufacturer Name
    * @param type Item Type
@@ -82,8 +79,4 @@ class Widget extends Product{
   Widget(String name, String manufacturer, String type) {
     super(name, manufacturer, type);
   }
-
 }
-
-
-
