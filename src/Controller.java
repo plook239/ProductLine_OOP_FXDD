@@ -241,6 +241,7 @@ public class Controller {
       Class.forName(JDBC_DRIVER);
       Connection connect = DriverManager.getConnection(DB_URL, USER, PASS);
 
+
       if (connect != null) {
         PreparedStatement prepStmt =
             connect.prepareStatement(
@@ -293,7 +294,6 @@ public class Controller {
 
   /** FXID list. */
   @FXML private Tab productLineTab;
-
   @FXML private Button addProductButton;
   @FXML private TextField textField_productName_1;
   @FXML private TextField textField_manufacturer_1;

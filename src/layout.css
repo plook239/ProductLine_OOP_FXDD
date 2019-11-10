@@ -21,6 +21,10 @@
   -fx-background-color: dark-primary-color;
 }
 
+.tab-pane .tab-header-background{
+  -fx-background-color: secondary-text-color;
+}
+
 .button {
   -fx-font: 14px "Arial";
   -fx-text-fill: text-primary-color;
