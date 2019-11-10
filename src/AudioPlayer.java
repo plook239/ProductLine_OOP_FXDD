@@ -1,8 +1,10 @@
-public class AudioPlayer extends Product implements MultimediaControl{
-
-  public AudioPlayer(String name, String manufacturer,
+public class AudioPlayer extends Product implements MultimediaControl {
+  /** Audio player constructor. */
+  public AudioPlayer(
+      String name,
+      String manufacturer,
       Screen supportedAudioFormats,
-      MonitorType supportedPlaylistFormats){
+      MonitorType supportedPlaylistFormats) {
     super(name, manufacturer, supportedAudioFormats);
 
     this.Name = name;
@@ -10,23 +12,22 @@ public class AudioPlayer extends Product implements MultimediaControl{
   }
 
   @Override
-  public void play(){
+  public void play() {
     System.out.println("Playing");
   }
 
   @Override
-  public void stop(){
+  public void stop() {
     System.out.println("Stopping");
   }
 
   @Override
-  public void previous(){
+  public void previous() {
     System.out.println("Previous");
   }
 
   @Override
-  public void next(){
+  public void next() {
     System.out.println("Next");
   }
-
 }
