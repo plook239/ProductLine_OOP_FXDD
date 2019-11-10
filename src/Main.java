@@ -1,8 +1,7 @@
-/**
- * Author: Peter Look II File: Main.java Project:
- * Production_Line_OOP_FXDD Date created: 9/16/2019
+/*
+  Author: Peter Look II File: Main.java Project:
+  Production_Line_OOP_FXDD Date created: 9/16/2019
  */
-package sample;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

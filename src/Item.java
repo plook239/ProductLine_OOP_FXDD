@@ -1,6 +1,4 @@
-package sample;
-
-public interface Item {
+interface Item {
 
   int getId();
   void setName(String name);

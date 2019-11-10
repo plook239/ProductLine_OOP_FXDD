@@ -1,5 +1,3 @@
-package sample;
-
 public enum ItemType {
   AUDIO("AU"),
   VISUAL("VI"),
@@ -8,4 +6,5 @@ public enum ItemType {
 
   public String code;
   ItemType(String code){ this.code = code;}
+
 }

@@ -28,6 +28,22 @@
   -fx-background-color: accent-color;
   -fx-effect: dropshadow(one-pass-box, black, 14, 0.0, 6, 0) ;
   -fx-background-radius: 6;
+  -fx-font-weight: bold;
+}
+
+.button:hover {
+  -fx-scale-y: 1.1; // set to 1.0 for no resize on hover
+  -fx-font-family: Lato;
+  -fx-font-size: 15;
+  -fx-text-fill: #ffffff;
+  -fx-font-weight: bold;
+}
+
+.button:pressed {
+  -fx-scale-y: 1;
+  -fx-scale-x: 1;
+  -fx-font-weight: bold;
+  -fx-font: 14px "Arial";
 }
 
 .label  {
@@ -60,6 +76,14 @@
   -fx-text-fill: white;
   -fx-font-weight: bold;
   -fx-alignment: CENTER_LEFT;
+}
+.table-view .column-header .label:pressed {
+  -fx-font: 15px "Arial";
+  -fx-font-weight: bold;
+}
+
+.table-view .column-header .label:hover {
+  -fx-text-fill: black;
 }
 
 .table-view .column-header-background .label{

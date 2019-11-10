@@ -1,25 +1,30 @@
-package sample;
-
 public class Screen implements ScreenSpec {
-
   String res;
   int rr;
   int rt;
 
-
+  /**
+   * @param res is the resolution
+   * @param rr is the refresh rate
+   * @param rt is the response time
+   * */
   public Screen(String res, int rr, int rt) {
     this.res = res;
     this.rr = rr;
     this.rt = rt;
   }
-
+  /**
+   * Creates a string with screen data
+   * */
   public String toString(){
     return "Screen:\n"
         + "Resolution: " + res + "\n"
         + "Refresh rate: " + rr + "\n"
         + "Response time: " + rt;
   }
-
+  /**
+   * Getters and setters
+   * */
   @Override
   public String getResolution() {
     return res;
@@ -27,7 +32,7 @@ public class Screen implements ScreenSpec {
 
   @Override
   public void setResolution(String res) {
-    res = res;
+    this.res = res;
   }
 
   @Override
@@ -37,7 +42,7 @@ public class Screen implements ScreenSpec {
 
   @Override
   public void setRefreshRate(int rr) {
-    rr = rr;
+    this.rr = rr;
   }
 
   @Override
@@ -47,6 +52,6 @@ public class Screen implements ScreenSpec {
 
   @Override
   public void setResponseTime(int rt) {
-    rt = rt;
+    this.rt = rt;
   }
 }
