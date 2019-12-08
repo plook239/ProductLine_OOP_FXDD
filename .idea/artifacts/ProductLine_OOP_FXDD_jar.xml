@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="ProductLine_OOP_FXDD:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/ProductLine_OOP_FXDD_jar</output-path>
+    <root id="archive" name="ProductLine_OOP_FXDD.jar">
+      <element id="module-output" name="ProductLine_OOP_FXDD" />
+      <element id="extracted-dir" path="C:/Program Files (x86)/H2/bin/h2-1.4.199.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>

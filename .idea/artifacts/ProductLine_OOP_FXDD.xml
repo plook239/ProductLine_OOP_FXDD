@@ -1,0 +1,13 @@
+<component name="ArtifactManager">
+  <artifact type="javafx" name="ProductLine_OOP_FXDD">
+    <output-path>$PROJECT_DIR$/out/artifacts/ProductLine_OOP_FXDD</output-path>
+    <root id="root">
+      <element id="archive" name="ProductLine_OOP_FXDD.jar">
+        <element id="module-output" name="ProductLine_OOP_FXDD" />
+        <element id="directory" name="META-INF">
+          <element id="file-copy" path="$PROJECT_DIR$/META-INF/MANIFEST.MF" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>
