@@ -3,7 +3,7 @@ Production Line Manager - OOP Project
 ## Demonstration
 Coming soon
 ## Documentation
-Coming soon
+![Project Demo](https://user-images.githubusercontent.com/54293097/70383044-2ef52400-1935-11ea-893f-fe3080f6b30e.gif)
 ## Diagrams
 ![Project diagram](images/Package_sample.jpg)
 ## Getting Started
@@ -27,6 +27,6 @@ n/a
 https://sites.google.com/site/profvanselow/course/cop-3003/oop-project\
 https://github.com/PV-COP/PV-README-TEMPLATE
 ## History
-Coming soon...
+This project began in August when OOP class began, since then it has been a tool for learning more advanced concepts in Java.
 ## Key Programming Concepts Utilized
 Javafx, scene builder, H2 database, SQL, object oriented paradigm
