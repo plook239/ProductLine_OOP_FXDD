@@ -1,9 +1,9 @@
 # Project Title
 Production Line Manager - OOP Project
 ## Demonstration
-Coming soon
-## Documentation
 ![Project Demo](https://user-images.githubusercontent.com/54293097/70383044-2ef52400-1935-11ea-893f-fe3080f6b30e.gif)
+## Documentation
+javadoc here
 ## Diagrams
 ![Project diagram](images/Package_sample.jpg)
 ## Getting Started
