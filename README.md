@@ -5,7 +5,7 @@ Production Line Manager - OOP Project
 ## Documentation
 javadoc here
 ## Diagrams
-![Project diagram](images/Package_sample.jpg)
+![Top-Level Package](https://user-images.githubusercontent.com/54293097/70383080-b80c5b00-1935-11ea-95d3-9b509bbb4ce9.jpg)
 ## Getting Started
 There are three tabs at the top of the application: Product Line, Produce, and 
 Production Log.
