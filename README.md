@@ -3,7 +3,7 @@ Fall 2019
 ## Demonstration
 ![Project Demo](https://user-images.githubusercontent.com/54293097/70383044-2ef52400-1935-11ea-893f-fe3080f6b30e.gif)
 ## Documentation
-javadoc here
+https://plook239.github.io/ProductLine_OOP_FXDD/
 ## Diagrams
 ![Top-Level Package](https://user-images.githubusercontent.com/54293097/70383080-b80c5b00-1935-11ea-95d3-9b509bbb4ce9.jpg)
 ## Getting Started
