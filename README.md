@@ -11,8 +11,7 @@ There are three tabs at the top of the application: Product Line, Produce, and
 Production Log.
 On the Product Line tab, a user shall enter a product type, product name,
 and a manufacturer. The 'add product' button submits that data to the database to be stored.
-Second and third tabs coming soon.
-
+The Product tab shows the user a list view of the products available for production. The user can choose a product from the list view and a quantity to produce from the choicebox. The Production Log tab writes the Production number, Product ID, Serial Number, and the Date and time produced for each product the user creates. The Employee tab allows for the creation of new employees and shows a list of current employees. When the user creates an employee the information such as Username, Password, and Email are written on the screen.
 ## Built With
 Language: Javafx \
 IDE: IntelliJ Ultimate Edition \
