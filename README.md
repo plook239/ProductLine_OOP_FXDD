@@ -3,7 +3,7 @@ Fall 2019
 ## Demonstration
 ![Project Demo](https://user-images.githubusercontent.com/54293097/70383044-2ef52400-1935-11ea-893f-fe3080f6b30e.gif)
 ## Documentation
-![Javadoc](https://plook239.github.io/ProductLine_OOP_FXDD/)
+[Javadoc](https://plook239.github.io/ProductLine_OOP_FXDD/)
 ## Diagrams
 ![Class Diagram](https://user-images.githubusercontent.com/54293097/70383080-b80c5b00-1935-11ea-95d3-9b509bbb4ce9.jpg)
 ![Database Diagram](https://user-images.githubusercontent.com/54293097/70384047-8f409180-1946-11ea-8e16-0009c38b0b2e.jpg)
@@ -21,8 +21,9 @@ Peter J Look II
 ## License
 n/a
 ## Acknowledgments
-https://sites.google.com/site/profvanselow/course/cop-3003/oop-project\
-https://github.com/PV-COP/PV-README-TEMPLATE
+[profvanselow/course/cop-3003/oop-project](https://sites.google.com/site/profvanselow/course/cop-3003/oop-project)
+
+[github.com/PV-COP/PV-README-TEMPLATE](https://github.com/PV-COP/PV-README-TEMPLATE)
 ## History
 This project began in August 2019 when OOP class began, since then it has been a tool for learning more advanced concepts in Java.
 ## Key Programming Concepts Utilized
