@@ -8,304 +8,256 @@
  * 11/09/2019
  */
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.Date;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.ListView;
-import javafx.scene.control.Tab;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 
-/** Controller for Production Manager tabs. */
+import java.sql.SQLException;
+
+
+/**
+ * Controller for Production Manager tabs.
+ */
 public class Controller {
 
-  private static final String JDBC_DRIVER = "org.h2.Driver";
-  private static final String DB_URL = "jdbc:h2:./res/ProductionDB";
-  private int quantity;
-  private String serialNumber;
-  private ObservableList<Product> productList = FXCollections.observableArrayList();
-  private ObservableList<ProductionRecord> productLog = FXCollections.observableArrayList();
+    /**
+     * FXID list.
+     */
+    @FXML
+    private Tab productLineTab;
+    @FXML
+    private Button addProductButton;
+    @FXML
+    private TextField textField_productName_1;
+    @FXML
+    private TextField textField_manufacturer_1;
+    @FXML
+    private ChoiceBox<String> choiceBox_1;
+    @FXML
+    private TableView<Product> productLineTableView;
+    @FXML
+    private TableColumn<Product, ItemType> productLineTableView_column_1;
+    @FXML
+    private TableColumn<Product, String> productLineTableView_column_2;
+    @FXML
+    private TableColumn<Product, String> productLineTableView_column_3;
+    @FXML
+    private Tab produceTab;
+    @FXML
+    private ListView<Product> produceListView;
+    @FXML
+    private ComboBox<Integer> comboBox_produce;
+    @FXML
+    private Button recordProduceButton;
+    @FXML
+    private Tab productionLogTab;
+    @FXML
+    private TextArea productionLogTextArea;
+    @FXML
+    private Tab employeeTab;
+    @FXML
+    private TextField EmpFullNmTextField;
+    @FXML
+    private TextField EmpPwTextField;
+    @FXML
+    private Button CreateEmployeeButton;
+    @FXML
+    private TextArea CreateEmpResultTextField;
+    @FXML
+    private ListView<String> AllEmpListView;
+    @FXML
+    private Label productNameLabel;
+    @FXML
+    private Label manufacturerNameLabel;
+    @FXML
+    private Label typeLabel;
+    @FXML
+    private Label passwordLabel;
+    @FXML
+    private Label fullNameLabel;
+    @FXML
+    private Label statusLabelTab1;
+    @FXML
+    private Label statusLabelTab3;
+    @FXML
+    private Label statusLabelTab2;
+    @FXML
+    private Label statusLabelTab4;
 
-  public Controller() {}
+    private static ObservableList<Product> productList = FXCollections.observableArrayList();
+    static ObservableList<ProductionRecord> productionLog = FXCollections.observableArrayList();
+    private static ObservableList<String> employeeList = FXCollections.observableArrayList();
+    private int itemCount = 0;
 
-  /** Initialize method for tab data. */
-  public void initialize() throws SQLException {
-    setupTypeChoice();
-    setupProductCombo();
-    loadProductLine();
-    loadProductionLog();
-  }
-
-  /**
-   * Populates the choiceBox on the Product Line Tab with values from ItemType.java
-   * "AUDIO","AUDIO_MOBILE", "VISUAL", and "VISUAL_MOBILE"
-   */
-  public void setupTypeChoice() {
-    choiceBox_1
-        .getItems()
-        .addAll(
-            ItemType.AUDIO.toString(),
-            ItemType.AUDIO_MOBILE.toString(),
-            ItemType.VISUAL.toString(),
-            ItemType.VISUAL_MOBILE.toString());
-  }
-
-  /**
-   * Populates the comboBox on the Produce tab with values 1-10 for choosing a quantity for Record
-   * Production button.
-   */
-  public void setupProductCombo() {
-    for (int i = 1; i < 11; i++) {
-      comboBox_produce.getItems().addAll(i);
-    }
-    comboBox_produce.setEditable(true);
-    comboBox_produce.getSelectionModel().selectFirst();
-  }
-
-  /**
-   * Populates ObservableList<Product> productList with values from the 'Add Product' button on the
-   * Production Line tab when 'Add Product' button is clicked
-   *
-   * @param productName from textField_productName_1.getText() and is String
-   * @param manufacturerName from textField_manufacturer_1.getText() and is String
-   * @param itemType from choiceBox_1.getValue() and is String
-   */
-  public void setupProductLineTable(String productName, String manufacturerName, String itemType) {
-
-    productList.addAll(new Widget(productName, manufacturerName, itemType));
-  }
-
-  /**
-   * Populates ObservableList<Product> productList with values from the database PRODUCT table and
-   * populates TableView columns with data
-   */
-  public void loadProductLine() throws SQLException {
-    Statement stmt = null;
-    String query = "SELECT NAME, TYPE, MANUFACTURER FROM PRODUCT";
-
-    try {
-      final String USER = "";
-      final String PASS = "";
-      Class.forName(JDBC_DRIVER);
-      Connection connect = DriverManager.getConnection(DB_URL, USER, PASS);
-      stmt = connect.createStatement();
-      ResultSet rs = stmt.executeQuery(query);
-      while (rs.next()) {
-        String prodName = rs.getString(1);
-        String manName = rs.getString(3);
-        String typeName = rs.getString(2);
-        setupProductLineTable(prodName, manName, typeName);
-      }
-      connect.close();
-    } catch (SQLException | ClassNotFoundException e) {
-      System.out.println(e);
-    } finally {
-      if (stmt != null) {
-        stmt.close();
-      }
+    public Controller() {
     }
 
-    productLineTableView_column_3.setCellValueFactory(new PropertyValueFactory<>("Manufacturer"));
-    productLineTableView_column_2.setCellValueFactory(new PropertyValueFactory<>("Name"));
-    productLineTableView_column_1.setCellValueFactory(new PropertyValueFactory<>("Type"));
-    productLineTableView.setItems(productList);
-    produceListView.setItems(productList);
-  }
-
-  /**
-   * Populates the ObservableList<ProductionRecord> productLog with values from the database
-   * PRODUCTIONRECORD table
-   */
-  public void loadProductionLog() throws SQLException {
-    Statement stmt = null;
-    String query = "SELECT * FROM PRODUCTIONRECORD";
-
-    try {
-      final String USER = "";
-      final String PASS = "";
-      Class.forName(JDBC_DRIVER);
-      Connection connect = DriverManager.getConnection(DB_URL, USER, PASS);
-      stmt = connect.createStatement();
-      ResultSet rs = stmt.executeQuery(query);
-
-      while (rs.next()) {
-        productLog.addAll(
-            new ProductionRecord(
-                rs.getInt("PRODUCT_ID"), rs.getInt("PRODUCTION_NUM"), serialNumber, new Date()));
-      }
-      stmt.close();
-
-    } catch (SQLException | ClassNotFoundException e) {
-      System.out.println(e);
-    } finally {
-      if (stmt != null) {
-        stmt.close();
-      }
+    /**
+     * Initialize method for tab data.
+     */
+    public void initialize() throws SQLException {
+        setupTypeChoice();
+        setupProductCombo();
+        loadProductLine();
+        loadProductionLog();
+        showEmployeeList();
     }
-  }
 
-  /**
-   * Populates the textArea on the Production Log tab with RecordProduction objects toString method
-   * for all Products in productList.
-   */
-  public void setupProductionLog() {
+    /**
+     * Populates the choiceBox on the Product Line Tab with values from ItemType.java
+     * "AUDIO","AUDIO_MOBILE", "VISUAL", and "VISUAL_MOBILE"
+     */
+    private void setupTypeChoice() {
+        choiceBox_1
+                .getItems()
+                .addAll(
+                        ItemType.AUDIO.toString(),
+                        ItemType.AUDIO_MOBILE.toString(),
+                        ItemType.VISUAL.toString(),
+                        ItemType.VISUAL_MOBILE.toString());
+    }
 
-    for (Product p : productList) {
-      ProductionRecord r = new ProductionRecord(p, quantity++);
-      serialNumber = r.getSerialNum();
-      java.util.Date dateAsOf = r.getProdDate();
-      java.sql.Date dateSQL = new java.sql.Date(dateAsOf.getTime());
-      productionLogTextArea.appendText(r.toString() + "\n");
+    /**
+     * Populates the comboBox on the Produce tab with values 1-10 for choosing a quantity for Record
+     * Production button.
+     */
+    private void setupProductCombo() {
+        for (int i = 1; i < 11; i++) {
+            comboBox_produce.getItems().addAll(i);
+        }
+        comboBox_produce.setEditable(true);
+        comboBox_produce.getSelectionModel().selectFirst();
+    }
 
-      try {
-        final String USER = "";
-        final String PASS = "";
-        Class.forName(JDBC_DRIVER);
-        Connection connect = DriverManager.getConnection(DB_URL, USER, PASS);
+    /**
+     * Populates ObservableList<Product> productList with values from the 'Add Product' button on the
+     * Production Line tab when 'Add Product' button is clicked
+     *
+     * @param productName      from textField_productName_1.getText() and is String
+     * @param manufacturerName from textField_manufacturer_1.getText() and is String
+     * @param itemType         from choiceBox_1.getValue() and is String
+     */
+    static void setupProductList(String productName, String manufacturerName, String itemType) {
+        productList.addAll(new Widget(productName, manufacturerName, itemType));
+    }
 
-        if (connect != null) {
-          PreparedStatement prepStmt =
-              connect.prepareStatement(
-                  "INSERT INTO PRODUCTIONRECORD (SERIAL_NUM,DATE_PRODUCED) VALUES (?,?)",
-                  PreparedStatement.RETURN_GENERATED_KEYS);
+    /**
+     * Populates ObservableList<Product> productList with values from the database PRODUCT table and
+     * populates TableView columns with data
+     */
+    public void loadProductLine() throws SQLException {
+        Database.dataBaseGetProductList();
+        productLineTableView_column_3.setCellValueFactory(new PropertyValueFactory<>("Manufacturer"));
+        productLineTableView_column_2.setCellValueFactory(new PropertyValueFactory<>("Name"));
+        productLineTableView_column_1.setCellValueFactory(new PropertyValueFactory<>("Type"));
+        productLineTableView.setItems(productList);
+        produceListView.setItems(productList);
+    }
 
-          prepStmt.setString(1, serialNumber);
-          prepStmt.setDate(2, dateSQL);
-          prepStmt.executeUpdate();
+    static void loadEmployeeList(String fullName) {
+        employeeList.addAll(fullName);
+    }
 
-          prepStmt.close();
-          connect.close();
+    private void showEmployeeList() throws SQLException {
+        Database.dataBaseGetEmployee();
+        AllEmpListView.setItems(employeeList);
+    }
 
+    /**
+     * Populates the ObservableList<ProductionRecord> productLog with values from the database
+     * PRODUCTIONRECORD table
+     */
+    public void loadProductionLog() throws SQLException {
+        Database.dataBaseLoadProductLog();
+
+        for (ProductionRecord ignored : productionLog) {
+            productionLogTextArea.appendText(productionLog.iterator().next().toString() + "\n");
+        }
+    }
+
+    /**
+     * Populates the textArea on the Production Log tab with RecordProduction objects toString method
+     * for all Products in productList.
+     */
+    private void showProductionLog(ObservableList<ProductionRecord> pL) {
+        productionLogTextArea.clear();
+        for (ProductionRecord pr : pL) {
+            productionLogTextArea.appendText(pr.toString() + "\n");
+        }
+
+    }
+
+    /**
+     * When 'Add Product' button is clicked, calls addProduct() to send product name, product
+     * manufacturer, and item type from the user on Production Line tab to the database PRODUCT table,
+     * then calls setupProductionLineTable() with the same product name, product manufacturer, and
+     * item type in order to create a Product Widget to add to the ObservableList<Product>productList.
+     */
+    @FXML
+    void addProductButtonClicked(MouseEvent event) {
+        if (textField_productName_1.getText().trim().isEmpty() || textField_manufacturer_1.getText().trim().isEmpty() || choiceBox_1.getValue() == null) {
+            productNameLabel.setStyle("-fx-text-fill: red");
+            manufacturerNameLabel.setStyle("-fx-text-fill: red");
+            typeLabel.setStyle("-fx-text-fill: red");
+            statusLabelTab1.setStyle("-fx-text-fill: red");
+            statusLabelTab1.setText("All fields required.");
         } else {
-          throw new Exception("Could not establish connection.");
+            Database.dataBaseAddProduct(
+                    textField_productName_1.getText(),
+                    textField_manufacturer_1.getText(),
+                    choiceBox_1.getValue());
+
+            setupProductList(
+                    textField_productName_1.getText(),
+                    textField_manufacturer_1.getText(),
+                    choiceBox_1.getValue());
+
+            statusLabelTab1.setText("Product Added.");
         }
-      } catch (Exception ex) {
-        System.out.println(ex.toString());
-      }
     }
-  }
 
-  /**
-   * When 'Add Product' button is clicked, calls addProduct() to send product name, product
-   * manufacturer, and item type from the user on Production Line tab to the database PRODUCT table,
-   * then calls setupProductionLineTable() with the same product name, product manufacturer, and
-   * item type in order to create a Product Widget to add to the ObservableList<Product>productList.
-   */
-  @FXML
-  void addProductButtonClicked(MouseEvent event) {
-    addProduct(
-        textField_productName_1.getText(),
-        textField_manufacturer_1.getText(),
-        choiceBox_1.getValue());
+    /**
+     * When 'Record Production' button is clicked, calls addProductionRecord() to send a ProductID
+     * values from the comboBox on the Produce tab and sets global variable Quantity to that selection
+     * for other use. Calls setupProductionLog() to populate Production Log with data from selection
+     */
+    @FXML
+    void recordProduceButtonClicked(MouseEvent event) {
+        statusLabelTab3.setText("New Production");
+        int qt = comboBox_produce.getSelectionModel().getSelectedIndex() + 1;
+        Product p = produceListView.getSelectionModel().getSelectedItem();
+        if (comboBox_produce.getSelectionModel().isEmpty() || produceListView.getSelectionModel().isEmpty()) {
+            statusLabelTab2.setText("Select a product and quantity");
+            statusLabelTab2.setStyle("-fx-text-fill: red");
+        } else {
+            statusLabelTab2.setText("Successfully added production");
+            ObservableList<ProductionRecord> productionRun = FXCollections.observableArrayList();
+            for (int q = 1; q <= qt; q++) {
+                productionRun.add(new ProductionRecord(p, itemCount++));
+            }
 
-    setupProductLineTable(
-        textField_productName_1.getText(),
-        textField_manufacturer_1.getText(),
-        choiceBox_1.getValue());
-  }
-
-  /**
-   * When 'Record Production' button is clicked, calls addProductionRecord() to send a ProductID
-   * values from the comboBox on the Produce tab and sets global variable Quantity to that selection
-   * for other use. Calls setupProductionLog() to populate Production Log with data from selection
-   */
-  @FXML
-  void recordProduceButtonClicked(MouseEvent event) {
-    addProductionRecord(comboBox_produce.getSelectionModel().getSelectedIndex() + 1);
-    quantity = comboBox_produce.getSelectionModel().getSelectedIndex() + 1;
-    setupProductionLog();
-  }
-
-  /**
-   * Receives values product name, manufacturer name, and item type from 'Add Product' button being
-   * clicked and stores those to the database PRODUCT table.
-   */
-  public static void addProduct(String productName, String manufacturerName, String itemType) {
-    try {
-      final String USER = "";
-      final String PASS = "";
-      Class.forName(JDBC_DRIVER);
-      Connection connect = DriverManager.getConnection(DB_URL, USER, PASS);
-
-
-      if (connect != null) {
-        PreparedStatement prepStmt =
-            connect.prepareStatement(
-                "INSERT INTO PRODUCT (NAME, TYPE, MANUFACTURER) VALUES (?,?,?)",
-                PreparedStatement.RETURN_GENERATED_KEYS);
-        prepStmt.setString(1, productName);
-        prepStmt.setString(2, itemType);
-        prepStmt.setString(3, manufacturerName);
-        prepStmt.executeUpdate();
-        prepStmt.close();
-        connect.close();
-      } else {
-        throw new Exception("Could not establish connection.");
-      }
-    } catch (Exception ex) {
-      System.out.println(ex.toString());
-    }
-  }
-
-  /**
-   * Receives the comboBox value that the user selected on the Produce tab and stores that many
-   * ProductID's in the database PRODUCTIONRECORD table.
-   */
-  public static void addProductionRecord(int comBox) {
-    try {
-      final String USER = "";
-      final String PASS = "";
-      Class.forName(JDBC_DRIVER);
-      Connection connect = DriverManager.getConnection(DB_URL, USER, PASS);
-
-      if (connect != null) {
-        PreparedStatement prepStmt =
-            connect.prepareStatement(
-                "INSERT INTO PRODUCTIONRECORD (PRODUCT_ID) VALUES (?)",
-                PreparedStatement.RETURN_GENERATED_KEYS);
-        for (int recProd = 1; recProd <= comBox; recProd++) {
-          prepStmt.setInt(1, recProd);
-          prepStmt.executeUpdate();
+            Database.dataBaseAddProductionRecord(productionRun);
+            showProductionLog(productionRun);
         }
-
-        prepStmt.close();
-        connect.close();
-      } else {
-        throw new Exception("Could not establish connection.");
-      }
-    } catch (Exception ex) {
-      System.out.println(ex.toString());
     }
-  }
 
-  /** FXID list. */
-  @FXML private Tab productLineTab;
-  @FXML private Button addProductButton;
-  @FXML private TextField textField_productName_1;
-  @FXML private TextField textField_manufacturer_1;
-  @FXML private ChoiceBox<String> choiceBox_1;
-  @FXML private TableView<Product> productLineTableView;
-  @FXML private TableColumn<Product, ItemType> productLineTableView_column_1;
-  @FXML private TableColumn<Product, String> productLineTableView_column_2;
-  @FXML private TableColumn<Product, String> productLineTableView_column_3;
-  @FXML private Tab produceTab;
-  @FXML private ListView<Product> produceListView;
-  @FXML private ComboBox<Integer> comboBox_produce;
-  @FXML private Button recordProduceButton;
-  @FXML private Tab productionLogTab;
-  @FXML private TextArea productionLogTextArea;
+    @FXML
+    void createEmployeeButtonClicked(MouseEvent event) throws SQLException {
+        if (EmpFullNmTextField.getText().trim().isEmpty() || EmpPwTextField.getText().trim().isEmpty()) {
+            fullNameLabel.setStyle("-fx-text-fill: red");
+            passwordLabel.setStyle("-fx-text-fill: red");
+            statusLabelTab4.setText("First Last and Password required.");
+        } else {
+            Employee e = new Employee(EmpFullNmTextField.getText(), EmpPwTextField.getText());
+            Database.dataBaseSetEmployee(e);
+            CreateEmpResultTextField.clear();
+            AllEmpListView.getItems().clear();
+            CreateEmpResultTextField.appendText(e.toString());
+            showEmployeeList();
+        }
+    }
+
 }

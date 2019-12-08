@@ -9,19 +9,23 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-/** Creates primary stage. */
+/**
+ * Creates primary stage.
+ */
 public class Main extends Application {
 
-  @Override
-  public void start(Stage primaryStage) throws Exception {
-    Parent root = FXMLLoader.load(getClass().getResource("productionManager.fxml"));
-    primaryStage.setTitle("Production Manager");
-    primaryStage.setScene(new Scene(root, 590, 525));
-    primaryStage.show();
-  }
+    @Override
+    public void start(Stage primaryStage) throws Exception {
+        Parent root = FXMLLoader.load(getClass().getResource("productionManager.fxml"));
+        primaryStage.setTitle("Production Manager");
+        primaryStage.setScene(new Scene(root, 590, 525));
+        primaryStage.show();
+    }
 
-  /** Main method. */
-  public static void main(String[] args) {
-    launch(args);
-  }
+    /**
+     * Main method.
+     */
+    public static void main(String[] args) {
+        launch(args);
+    }
 }

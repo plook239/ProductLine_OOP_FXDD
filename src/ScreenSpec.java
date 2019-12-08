@@ -1,13 +1,13 @@
 interface ScreenSpec {
-  String getResolution();
+    String getResolution();
 
-  void setResolution(String res);
+    void setResolution(String res);
 
-  int getRefreshRate();
+    int getRefreshRate();
 
-  void setRefreshRate(int rr);
+    void setRefreshRate(int rr);
 
-  int getResponseTime();
+    int getResponseTime();
 
-  void setResponseTime(int rt);
+    void setResponseTime(int rt);
 }
