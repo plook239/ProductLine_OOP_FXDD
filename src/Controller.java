@@ -221,7 +221,7 @@ public class Controller {
     /**
      * When 'Record Production' button is clicked, calls addProductionRecord() to send a ProductID
      * values from the comboBox on the Produce tab and sets global variable Quantity to that selection
-     * for other use. Calls setupProductionLog() to populate Production Log with data from selection
+     * for other use.
      */
     @FXML
     void recordProduceButtonClicked(MouseEvent event) {
