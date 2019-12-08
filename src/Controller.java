@@ -1,11 +1,5 @@
-/*
- * Author: Peter Look II
- * File: Controller.java
- * Project: Production_Line_OOP_FXDD Date
- * created:
- * 9/16/2019
- * updated:
- * 11/09/2019
+/**
+ * @author Peter Look
  */
 
 import javafx.collections.FXCollections;
@@ -96,7 +90,7 @@ public class Controller {
     }
 
     /**
-     * Initialize method for tab data.
+     * Initialize
      */
     public void initialize() throws SQLException {
         setupTypeChoice();
@@ -145,8 +139,7 @@ public class Controller {
     }
 
     /**
-     * Populates ObservableList<Product> productList with values from the database PRODUCT table and
-     * populates TableView columns with data
+     * Set tableview columns up, load productList into TableView and ListView
      */
     public void loadProductLine() throws SQLException {
         Database.dataBaseGetProductList();
@@ -157,10 +150,16 @@ public class Controller {
         produceListView.setItems(productList);
     }
 
+    /**
+     * @param fullName users first and last name
+     */
     static void loadEmployeeList(String fullName) {
         employeeList.addAll(fullName);
     }
 
+    /**
+     * Calls db and gets all employee first and last names.
+     */
     private void showEmployeeList() throws SQLException {
         Database.dataBaseGetEmployee();
         AllEmpListView.setItems(employeeList);
@@ -179,8 +178,8 @@ public class Controller {
     }
 
     /**
-     * Populates the textArea on the Production Log tab with RecordProduction objects toString method
-     * for all Products in productList.
+     * @param pL ObservableList<ProductionRecord> pl </ProductionRecord>
+     *           clears textArea and writes new products to be logged.
      */
     private void showProductionLog(ObservableList<ProductionRecord> pL) {
         productionLogTextArea.clear();
@@ -244,6 +243,9 @@ public class Controller {
         }
     }
 
+    /**
+     * When 'createEmployeeButton' is clicked, sends the data to employee table in db.
+     */
     @FXML
     void createEmployeeButtonClicked(MouseEvent event) throws SQLException {
         if (EmpFullNmTextField.getText().trim().isEmpty() || EmpPwTextField.getText().trim().isEmpty()) {

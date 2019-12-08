@@ -1,3 +1,7 @@
+/**
+ * @author Peter Look
+ */
+
 public class MoviePlayer extends Product implements MultimediaControl {
 
     private MonitorType monitorType;

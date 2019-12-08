@@ -1,3 +1,7 @@
+/**
+ * @author Peter Look
+ */
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 

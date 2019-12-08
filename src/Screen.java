@@ -1,3 +1,7 @@
+/**
+ * @author Peter Look
+ */
+
 public class Screen implements ScreenSpec {
     String res;
     int rr;

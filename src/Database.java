@@ -1,3 +1,7 @@
+/**
+ * @author Peter Look
+ */
+
 import javafx.collections.ObservableList;
 
 import java.sql.*;
@@ -12,6 +16,11 @@ public class Database {
     private static Statement stmt;
     public static Connection connect;
 
+    /**
+     * @param itemType
+     * @param manufacturerName
+     * @param productName
+     */
     static void dataBaseAddProduct(String productName, String manufacturerName, String itemType) {
         String query = "INSERT INTO PRODUCT (NAME, TYPE, MANUFACTURER) VALUES (?,?,?)";
         try {
@@ -37,6 +46,9 @@ public class Database {
         }
     }
 
+    /**
+     * @param productionRun insert into PRODUCTIONRECORD table product id, serial num, date produced.
+     */
     public static void dataBaseAddProductionRecord(ObservableList<ProductionRecord> productionRun) {
         String query = "INSERT INTO PRODUCTIONRECORD (PRODUCT_ID,SERIAL_NUM,DATE_PRODUCED) VALUES (?,?,?)";
         try {
@@ -63,6 +75,9 @@ public class Database {
         }
     }
 
+    /**
+     * Get all from PRODUCT table
+     */
     static void dataBaseGetProductList() throws SQLException {
         String query = "SELECT * FROM PRODUCT";
         try {
@@ -86,6 +101,9 @@ public class Database {
         }
     }
 
+    /**
+     * Get all from EMPLOYEE table
+     */
     static void dataBaseGetEmployee() throws SQLException {
         String query = "SELECT * FROM EMPLOYEE";
         try {
@@ -111,6 +129,9 @@ public class Database {
         }
     }
 
+    /**
+     * @param emp Insert into EMPLOYEE table username, password, email, fullname.
+     */
     static void dataBaseSetEmployee(Employee emp) {
         String query = "INSERT INTO EMPLOYEE (USERNAME, PASSWORD, EMAIL, FULLNAME) VALUES (?,?,?,?)";
         try {
@@ -139,6 +160,9 @@ public class Database {
         }
     }
 
+    /**
+     * Get all from PRODUCTIONRECORD table
+     */
     public static void dataBaseLoadProductLog() throws SQLException {
         String query = "SELECT * FROM PRODUCTIONRECORD";
         try {

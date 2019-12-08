@@ -1,3 +1,7 @@
+/**
+ * @author Peter Look
+ */
+
 enum ItemType {
     AUDIO("AU"),
     VISUAL("VI"),

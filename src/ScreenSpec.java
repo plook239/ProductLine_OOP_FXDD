@@ -1,3 +1,7 @@
+/**
+ * @author Peter Look
+ */
+
 interface ScreenSpec {
     String getResolution();
 

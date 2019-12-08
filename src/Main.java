@@ -1,7 +1,6 @@
-/*
- Author: Peter Look II File: Main.java Project:
- Production_Line_OOP_FXDD Date created: 9/16/2019
-*/
+/**
+ * @author Peter Look
+ */
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -9,9 +8,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-/**
- * Creates primary stage.
- */
+
 public class Main extends Application {
 
     @Override
@@ -22,9 +19,6 @@ public class Main extends Application {
         primaryStage.show();
     }
 
-    /**
-     * Main method.
-     */
     public static void main(String[] args) {
         launch(args);
     }

@@ -1,6 +1,15 @@
+/**
+ * @author Peter Look
+ */
+
 public class AudioPlayer extends Product implements MultimediaControl {
     /**
      * Audio player constructor.
+     *
+     * @param manufacturer             String
+     * @param name                     String
+     * @param supportedAudioFormats    Screen
+     * @param supportedPlaylistFormats MonitorType
      */
     public AudioPlayer(
             String name,
