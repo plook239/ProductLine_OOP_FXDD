@@ -3,7 +3,7 @@ Fall 2019
 ## Demonstration
 ![Project Demo](https://user-images.githubusercontent.com/54293097/70383044-2ef52400-1935-11ea-893f-fe3080f6b30e.gif)
 ## Documentation
-https://plook239.github.io/ProductLine_OOP_FXDD/
+![Javadoc](https://plook239.github.io/ProductLine_OOP_FXDD/)
 ## Diagrams
 ![Top-Level Package](https://user-images.githubusercontent.com/54293097/70383080-b80c5b00-1935-11ea-95d3-9b509bbb4ce9.jpg)
 ## Getting Started
@@ -17,15 +17,15 @@ Language: Javafx \
 IDE: IntelliJ Ultimate Edition \
 Other tools: Scene builder, H2 database
 ## Contributing
-Professor Vanselow contributes in class and via his website
+Professor Vanselow contributes in class and via his website.
 ## Author
-Peter J Look II - SID: 815 192 220
+Peter J Look II
 ## License
 n/a
 ## Acknowledgments
 https://sites.google.com/site/profvanselow/course/cop-3003/oop-project\
 https://github.com/PV-COP/PV-README-TEMPLATE
 ## History
-This project began in August when OOP class began, since then it has been a tool for learning more advanced concepts in Java.
+This project began in August 2019 when OOP class began, since then it has been a tool for learning more advanced concepts in Java.
 ## Key Programming Concepts Utilized
 Javafx, scene builder, H2 database, SQL, object oriented paradigm
